@@ -1,16 +1,16 @@
 import pyperclip
 
 # function to handle errors during password validation
-def vpw_error_handler(pw):
+def pw_validation_check(pw):
     try:
-        validate_pw(pw)
+        pw_strengh_check(pw)
         return True
     except ValueError as ve:
         print(f"ValueError: {ve}")
         return False
 
 # function to validate password strength
-def validate_pw(password: str) -> None:
+def pw_strengh_check(password: str) -> None:
     #check for length
     if len(password) < 8:
         raise ValueError("Password must be at least 8 character.")
@@ -33,7 +33,7 @@ def main():
     # Loop until a valid password is entered that meets all criteria
     while not is_valid:
         pw = input("Enter your password: ")
-        is_valid = vpw_error_handler(pw)
+        is_valid = pw_validation_check(pw)
 
 if __name__ == "__main__":
     main()
